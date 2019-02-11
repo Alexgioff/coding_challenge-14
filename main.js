@@ -10,7 +10,7 @@ const moves = document.getElementById("moves");
 const movesWin = document.getElementById("movesUsed");
 const timeSpent = document.getElementById("timeSpent");
 
-let cards = board.querySelectorAll("div");
+let cards = Array.prototype.slice.call(board.querySelectorAll("div"));
 let hearts = life.querySelectorAll("i");
 let timer = document.getElementById("timer");
 let heart = 3;
@@ -92,8 +92,12 @@ function resetGame() {
     });
 }
 
+function isVisible(element,index, Array){
+    return element.firstElementChild.classList.contains("visible");
+}
+
 function checkWinner() {
-    if(cards[0].firstElementChild.classList.contains("visible") && cards[1].firstElementChild.classList.contains("visible") && cards[2].firstElementChild.classList.contains("visible") && cards[3].firstElementChild.classList.contains("visible") && cards[4].firstElementChild.classList.contains("visible") && cards[5].firstElementChild.classList.contains("visible") && cards[6].firstElementChild.classList.contains("visible") && cards[7].firstElementChild.classList.contains("visible") && cards[8].firstElementChild.classList.contains("visible") && cards[9].firstElementChild.classList.contains("visible") && cards[10].firstElementChild.classList.contains("visible") && cards[11].firstElementChild.classList.contains("visible") ){
+    if(cards.every(isVisible)){
         winner.classList.add("winner_active");
         movesWin.innerHTML = Number(moves.innerHTML);
         timeSpent.innerHTML = timer.innerHTML;
