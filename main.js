@@ -66,9 +66,11 @@ function startGame() {
             cards[target].before(cards[target2]);
         }
         var temp =  Math.floor(Math.random() * cards.length -1) + 1;
-        cards[temp].firstElementChild.classList.add("visible");
+       
         setTimeout(() => {
-            cards[temp].firstElementChild.classList.remove("visible");
+            cards.forEach(card => {
+                card.firstElementChild.classList.remove("visible");
+            })
         }, 10);
         startTimer();
     }
@@ -86,9 +88,7 @@ function resetGame() {
     heart = 3;
     game = false;
     cards.forEach(card => {
-        if(card.firstElementChild.classList.contains("visible")){
-            card.firstElementChild.classList.remove("visible");
-        }
+        card.firstElementChild.classList.add("visible");
     });
 }
 
