@@ -71,7 +71,7 @@ function startGame() {
             cards.forEach(card => {
                 card.firstElementChild.classList.remove("visible");
             })
-        }, 10);
+        }, 500);
         startTimer();
     }
 };
